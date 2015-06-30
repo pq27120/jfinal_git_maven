@@ -54,8 +54,8 @@ public class WeixinConfig extends JFinalConfig {
 //		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
 //		me.add(druidPlugin);
 		
-		EhCachePlugin ecp = new EhCachePlugin();
-		me.add(ecp);
+//		EhCachePlugin ecp = new EhCachePlugin();
+//		me.add(ecp);
 
         // 配置ActiveRecord插件
 //        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
