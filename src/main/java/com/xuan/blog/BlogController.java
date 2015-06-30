@@ -1,4 +1,4 @@
-package com.demo.blog;
+package com.xuan.blog;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;

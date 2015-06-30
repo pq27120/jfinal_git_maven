@@ -1,4 +1,4 @@
-package com.demo.index;
+package com.xuan.index;
 
 import com.jfinal.core.Controller;
 

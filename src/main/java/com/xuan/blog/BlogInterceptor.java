@@ -1,11 +1,11 @@
-package com.demo.blog;
+package com.xuan.blog;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 
 /**
  * BlogInterceptor
- * 此拦截器仅做为示例展示，在本 com.demo 中并不需要
+ * 此拦截器仅做为示例展示，在本 com.xuan 中并不需要
  */
 public class BlogInterceptor implements Interceptor {
 	
