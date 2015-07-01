@@ -28,7 +28,8 @@ public class MsgInterceptor implements Interceptor {
 	
 	public void intercept(Invocation inv) {
 		Controller controller = inv.getController();
-		if (controller instanceof MsgController == false)
+        System.out.println(controller.getPara("echostr"));
+        if (controller instanceof MsgController == false)
 			throw new RuntimeException("控制器需要继承 MsgController");
 		
 		try {
