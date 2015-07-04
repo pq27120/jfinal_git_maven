@@ -1,6 +1,7 @@
 package com.xuan.job;
 
 import com.xuan.model.DeferLog;
+import com.xuan.util.UrlUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,6 +19,7 @@ import org.quartz.JobExecutionException;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,7 +80,7 @@ public class DeferDFServerJob implements Job {
                 httppost.releaseConnection();
                 html = EntityUtils.toString(entity, "GBK");
 
-                new DeferLog().set("time", new Date()).set("remark", html).save();
+                new DeferLog().set("time", new Date()).set("remark", UrlUtil.encoder(html)).save();
                 if (html.contains("请在该产品到期前1日内进行积分免费续期")) {
                     System.out.println("续期完成");
                 }

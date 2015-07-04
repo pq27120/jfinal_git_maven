@@ -6,8 +6,13 @@
 
 package com.xuan.common;
 
+import com.alibaba.druid.filter.stat.StatFilter;
+import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.dialect.Dialect;
+import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
+import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.xuan.model.DeferLog;
 import com.xuan.sdk.api.ApiConfigKit;
 import com.xuan.weixin.WeixinApiController;
@@ -53,18 +58,31 @@ public class WeixinConfig extends JFinalConfig {
 	}
 	
 	public void configPlugin(Plugins me) {
-		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
-		me.add(druidPlugin);
+//		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim(),"com.mysql.jdbc.Driver");
+//        //集成druid的插件
+//        druidPlugin.addFilter(new StatFilter());
+////        druidPlugin.setInitialSize(3).setMaxActive(5);
+//        WallFilter wall = new WallFilter();
+//        wall.setDbType("mysql");
+//        druidPlugin.addFilter(wall);
+//        me.add(druidPlugin);
+
+        C3p0Plugin cp = new C3p0Plugin(PropKit.get("jdbcUrl"),
+                PropKit.get("user"), PropKit.get("password").trim());
+        me.add(cp);
 
 //		EhCachePlugin ecp = new EhCachePlugin();
 //		me.add(ecp);
 
         // 配置ActiveRecord插件
-        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
-        me.add(arp);
+        ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
+        arp.setDialect(new MysqlDialect());
+        arp.setShowSql(true);
         arp.addMapping("defer_log", DeferLog.class);
+        me.add(arp);
 
         QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");
+        quartzPlugin.version(QuartzPlugin.VERSION_1);
         me.add(quartzPlugin);
     }
 
