@@ -6,7 +6,9 @@
 
 package com.xuan.common;
 
+import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.xuan.model.DeferLog;
 import com.xuan.sdk.api.ApiConfigKit;
 import com.xuan.weixin.WeixinApiController;
 import com.xuan.weixin.WeixinMsgController;
@@ -51,18 +53,22 @@ public class WeixinConfig extends JFinalConfig {
 	}
 	
 	public void configPlugin(Plugins me) {
-//		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
-//		me.add(druidPlugin);
-		
+		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
+		me.add(druidPlugin);
+
 //		EhCachePlugin ecp = new EhCachePlugin();
 //		me.add(ecp);
 
         // 配置ActiveRecord插件
-//        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
-//        me.add(arp);
-	}
-	
-	public void configInterceptor(Interceptors me) {
+        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+        me.add(arp);
+        arp.addMapping("defer_log", DeferLog.class);
+
+        QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");
+        me.add(quartzPlugin);
+    }
+
+    public void configInterceptor(Interceptors me) {
 		
 	}
 	
