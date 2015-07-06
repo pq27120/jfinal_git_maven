@@ -27,6 +27,7 @@ import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
+import com.xuan.weixin.controller.CommonController;
 
 public class WeixinConfig extends JFinalConfig {
 	
@@ -53,6 +54,7 @@ public class WeixinConfig extends JFinalConfig {
 	}
 	
 	public void configRoute(Routes me) {
+		me.add("/", CommonController.class);
 		me.add("/msg", WeixinMsgController.class);
 		me.add("/api", WeixinApiController.class, "/api");
 	}
