@@ -13,6 +13,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.Dialect;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.xuan.model.DeferLog;
 import com.xuan.sdk.api.ApiConfigKit;
 import com.xuan.weixin.WeixinApiController;
@@ -60,24 +61,24 @@ public class WeixinConfig extends JFinalConfig {
 	}
 	
 	public void configPlugin(Plugins me) {
-//		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim(),"com.mysql.jdbc.Driver");
-//        //集成druid的插件
-//        druidPlugin.addFilter(new StatFilter());
-////        druidPlugin.setInitialSize(3).setMaxActive(5);
-//        WallFilter wall = new WallFilter();
-//        wall.setDbType("mysql");
-//        druidPlugin.addFilter(wall);
-//        me.add(druidPlugin);
+		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim(),"com.mysql.jdbc.Driver");
+        //集成druid的插件
+        druidPlugin.addFilter(new StatFilter());
+        druidPlugin.setInitialSize(3).setMinIdle(3).setMaxActive(5);
+        WallFilter wall = new WallFilter();
+        wall.setDbType("mysql");
+        druidPlugin.addFilter(wall);
+        me.add(druidPlugin);
 
-        C3p0Plugin cp = new C3p0Plugin(PropKit.get("jdbcUrl"),
-                PropKit.get("user"), PropKit.get("password").trim());
-        me.add(cp);
+//        C3p0Plugin cp = new C3p0Plugin(PropKit.get("jdbcUrl"),
+//                PropKit.get("user"), PropKit.get("password").trim());
+//        me.add(cp);
 
 //		EhCachePlugin ecp = new EhCachePlugin();
 //		me.add(ecp);
 
         // 配置ActiveRecord插件
-        ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
+        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
         arp.setDialect(new MysqlDialect());
         arp.setShowSql(true);
         arp.addMapping("defer_log", DeferLog.class);
@@ -93,7 +94,8 @@ public class WeixinConfig extends JFinalConfig {
 	}
 	
 	public void configHandler(Handlers me) {
-		
+        DruidStatViewHandler dvh =  new DruidStatViewHandler("/druid");
+        me.add(dvh);
 	}
 	
 	public static void main(String[] args) {
