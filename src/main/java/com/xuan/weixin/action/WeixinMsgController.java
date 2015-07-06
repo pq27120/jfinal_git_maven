@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
 
-package com.xuan.weixin;
+package com.xuan.weixin.action;
 
 import com.jfinal.aop.Enhancer;
 import com.jfinal.kit.PropKit;

@@ -1,4 +1,4 @@
-package com.xuan.weixin;
+package com.xuan.weixin.action;
 
 import com.xuan.sdk.api.ApiConfig;
 import com.xuan.sdk.api.ApiResult;

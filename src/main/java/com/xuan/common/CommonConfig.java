@@ -8,29 +8,18 @@ package com.xuan.common;
 
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
+import com.jfinal.config.*;
+import com.jfinal.core.JFinal;
 import com.jfinal.ext.plugin.quartz.QuartzPlugin;
+import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.activerecord.dialect.Dialect;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
-import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.xuan.model.DeferLog;
 import com.xuan.sdk.api.ApiConfigKit;
-import com.xuan.weixin.WeixinApiController;
-import com.xuan.weixin.WeixinMsgController;
-import com.jfinal.config.Constants;
-import com.jfinal.config.Handlers;
-import com.jfinal.config.Interceptors;
-import com.jfinal.config.JFinalConfig;
-import com.jfinal.config.Plugins;
-import com.jfinal.config.Routes;
-import com.jfinal.core.JFinal;
-import com.jfinal.kit.PropKit;
-import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.plugin.ehcache.EhCachePlugin;
-import com.xuan.weixin.controller.CommonController;
 
-public class WeixinConfig extends JFinalConfig {
+public class CommonConfig extends JFinalConfig {
 	
 	/**
 	 * 如果生产环境配置文件存在，则优先加载该配置，否则加载开发环境配置文件
@@ -55,9 +44,8 @@ public class WeixinConfig extends JFinalConfig {
 	}
 	
 	public void configRoute(Routes me) {
-		me.add("/", CommonController.class);
-		me.add("/msg", WeixinMsgController.class);
-		me.add("/api", WeixinApiController.class, "/api");
+		me.add(new WeiXinRoute()); //微信路由
+		me.add(new AdminRoute()); //管理平台路由
 	}
 	
 	public void configPlugin(Plugins me) {
@@ -69,10 +57,6 @@ public class WeixinConfig extends JFinalConfig {
         wall.setDbType("mysql");
         druidPlugin.addFilter(wall);
         me.add(druidPlugin);
-
-//        C3p0Plugin cp = new C3p0Plugin(PropKit.get("jdbcUrl"),
-//                PropKit.get("user"), PropKit.get("password").trim());
-//        me.add(cp);
 
 //		EhCachePlugin ecp = new EhCachePlugin();
 //		me.add(ecp);
