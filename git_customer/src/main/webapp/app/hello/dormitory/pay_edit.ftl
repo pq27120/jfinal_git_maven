@@ -9,6 +9,7 @@
     <title>费用编辑</title>
     <link href="/modules/bootstrap/1.0.0/bootstrap.css" rel="stylesheet">
     <link href="/static/hello/src/dashboard.css" rel="stylesheet">
+    <link href="/modules/datetimepicker/1.0.0/bootstrap-datetimepicker.css" rel="stylesheet">
 </head>
 <body>
 
@@ -44,10 +45,17 @@
                 <div class="form-group">
                     <label for="time" class="col-sm-2 control-label">时间</label>
 
-                    <div class="col-sm-10">
+                    <div class="date form_datetime col-md-5" id="datetimepicker" data-date="1979-09-16T05:25:07Z"
+                         data-date-format="dd MM yyyy - HH:ii p" data-link-field="hid_time">
                         <input type="text" class="form-control" value="${(pay.time)!}" id="time"
-                               name="pay.time">${timeMsg!}
+                               name="pay.time" readonly size="16">
+                        <span class="add-on"><i class="icon-th"></i></span>
+                        <#--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                        <#--<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>-->
+                    ${timeMsg!}
                     </div>
+
+                    <input type="hidden" name="hid_time" id="hid_time" value=""/><br/>
                 </div>
 
                 <div class="form-group">
@@ -97,11 +105,13 @@
         base: "/modules/",
         alias: {
             "jquery": "jquery/1.10.1/jquery.js",
-            "bootstrap": "bootstrap/1.0.0/bootstrap.js"
+            "bootstrap": "bootstrap/1.0.0/bootstrap.js",
+            "datepicker": "datetimepicker/1.0.0/bootstrap-datetimepicker.js",
+            "datepickerzh": "datetimepicker/1.0.0/bootstrap-datetimepicker.zh-CN.js"
         }
     });
 
-    //    seajs.use(["/static/hello/dormitory/src/user"]);
+    seajs.use(["/static/hello/src/pay_edit"]);
 </script>
 </body>
 </html>
