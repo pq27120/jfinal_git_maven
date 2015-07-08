@@ -17,6 +17,8 @@ import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.xuan.model.DeferLog;
+import com.xuan.model.Pay;
+import com.xuan.model.User;
 import com.xuan.sdk.api.ApiConfigKit;
 import com.jfinal.plugin.spring.SpringPlugin;
 
@@ -69,7 +71,11 @@ public class CommonConfig extends JFinalConfig {
         ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
         arp.setDialect(new MysqlDialect());
         arp.setShowSql(true);
+
         arp.addMapping("defer_log", DeferLog.class);
+        arp.addMapping("user", User.class);
+        arp.addMapping("pay", Pay.class);
+
         me.add(arp);
 
         QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");

@@ -18,6 +18,8 @@
 
 	<!-- 声明Blog的Dao实例 -->
 	<bean id="deferLogDao" class="com.xuan.model.DeferLog" />
+	<bean id="userDao" class="com.xuan.model.User" />
+	<bean id="payDao" class="com.xuan.model.Pay" />
 
 	<!-- 声明deferService服务实例 -->
 	<bean id="deferService" class="com.xuan.producer.service.impl.DeferLogServiceImpl">
@@ -25,8 +27,20 @@
 		<property name="deferLogDao" ref="deferLogDao" />
 	</bean>
 
+    <bean id="userService" class="com.xuan.producer.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+    <bean id="payService" class="com.xuan.producer.service.impl.PayServiceImpl">
+		<property name="payDao" ref="payDao" />
+	</bean>
+
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.xuan.service.DeferLogService"
 		ref="deferService" />
+    <dubbo:service interface="com.xuan.service.UserService"
+		ref="userService" />
+    <dubbo:service interface="com.xuan.service.PayService"
+		ref="payService" />
 
 </beans>

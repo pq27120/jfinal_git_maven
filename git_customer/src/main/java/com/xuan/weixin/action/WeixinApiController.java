@@ -34,7 +34,7 @@ public class WeixinApiController extends ApiController {
 	
 	/*
 	public void index() {
-		render("/api/index.html");
+		render("/api/index.ftl");
 	}
 	*/
 	

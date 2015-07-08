@@ -18,4 +18,8 @@
 	<!-- 声明BlogService服务代理 -->
 	<dubbo:reference id="deferLogService"
 		interface="com.xuan.service.DeferLogService" />
+    <dubbo:reference id="userService"
+		interface="com.xuan.service.UserService" />
+    <dubbo:reference id="payService"
+		interface="com.xuan.service.PayService" />
 </beans>

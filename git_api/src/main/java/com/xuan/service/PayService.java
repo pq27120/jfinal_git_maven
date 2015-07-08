@@ -1,7 +1,7 @@
 package com.xuan.service;
 
 import com.jfinal.plugin.activerecord.Page;
-import com.jfinal.plugin.activerecord.Record;
+import com.xuan.model.Pay;
 
 /**
  * 类简述
@@ -13,18 +13,21 @@ import com.jfinal.plugin.activerecord.Record;
  * @version 1.0.0
  * @Company 亚信科技
  * @Copyright 亚信科技
- * @CreateDate 2015-07-07 15:08
+ * @CreateDate 2015-07-07 16:30
  */
 
-public interface RecordService {
+public interface PayService {
 
-    Page<Record> paginate(int pageNumber, int pageSize);
+    Page<Pay> paginate(int pageNumber, int pageSize);
 
-    void update(Record pay);
+    void update(Pay pay);
 
-    Record save(Record pay);
+    Pay save(Pay pay);
 
-    Record findById(String id);
+    Pay findById(String id);
 
     void deleteById(String id);
+
+    int findCountByUserId(String userId);
+
 }

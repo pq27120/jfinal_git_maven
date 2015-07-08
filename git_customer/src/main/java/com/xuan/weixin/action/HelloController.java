@@ -26,10 +26,10 @@ public class HelloController extends Controller {
 
     public void index() {
         setAttr("deferPage", deferLogService.paginate(getParaToInt(0, 1), 10));
-        render("/app/hello/index.html");
+        render("/app/hello/index.ftl");
     }
 
     public void logon() {
-        render("/app/hello/logon.html");
+        render("/app/hello/logon.ftl");
     }
 }

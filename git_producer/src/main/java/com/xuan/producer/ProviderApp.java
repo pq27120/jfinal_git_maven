@@ -9,6 +9,8 @@ import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.spring.SpringPlugin;
 import com.xuan.model.DeferLog;
+import com.xuan.model.Pay;
+import com.xuan.model.User;
 
 /**
  * 类简述
@@ -39,7 +41,9 @@ public class ProviderApp {
         // 配置ActiveRecord插件
         ActiveRecordPlugin arp = new ActiveRecordPlugin(dp);
 
-        arp.addMapping("defer_log", DeferLog.class); // 映射blog 表到 Blog模型
+        arp.addMapping("defer_log", DeferLog.class);
+        arp.addMapping("user", User.class);
+        arp.addMapping("pay", Pay.class);
         arp.setDialect(new MysqlDialect());
         arp.setShowSql(p.getBoolean("devMode", false));
         arp.setDevMode(p.getBoolean("devMode", false));

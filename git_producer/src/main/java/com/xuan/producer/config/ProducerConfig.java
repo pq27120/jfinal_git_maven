@@ -10,6 +10,8 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.spring.SpringPlugin;
 import com.xuan.model.DeferLog;
+import com.xuan.model.Pay;
+import com.xuan.model.User;
 
 public class ProducerConfig extends JFinalConfig {
 
@@ -50,7 +52,9 @@ public class ProducerConfig extends JFinalConfig {
 
 		arp.setShowSql(getPropertyToBoolean("devMode", false));
 		arp.setDevMode(getPropertyToBoolean("devMode", false));
-		arp.addMapping("defer_log", DeferLog.class); // 映射blog 表到 Blog模型
+		arp.addMapping("defer_log", DeferLog.class);
+		arp.addMapping("user", User.class);
+		arp.addMapping("pay", Pay.class);
 		arp.setDialect(new MysqlDialect());
 
 		// 配置Spring插件
