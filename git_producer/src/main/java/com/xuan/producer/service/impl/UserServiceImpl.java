@@ -6,6 +6,7 @@ import com.xuan.model.User;
 import com.xuan.service.UserService;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 类简述
@@ -27,6 +28,11 @@ public class UserServiceImpl implements UserService {
     public Page<User> paginate(int pageNumber, int pageSize) {
         Page<User> user = userDao.paginate(pageNumber, pageSize, "select *", "from user order by id asc");
         return user;
+    }
+
+    public List<User> findList() {
+        List<User> list = userDao.find("select * from user order by id asc");
+        return list;
     }
 
     public void update(User user) {

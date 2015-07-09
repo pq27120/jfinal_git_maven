@@ -28,18 +28,11 @@ public class PayController extends Controller {
     @Inject.BY_NAME
     private PayService payService;
 
-    @Inject.BY_NAME
-    private UserService userService;
-
     public void index() {
-        Page<Pay> payPage = payService.paginate(getParaToInt(0, 1), 10);
-        setAttr("payPage", payPage);
         render("/app/hello/dormitory/pay.ftl");
     }
 
     public void add() {
-        Page<User> userPage = userService.paginate(getParaToInt(0, 1), 10);
-        setAttr("userPage",userPage);
         render("/app/hello/dormitory/pay_edit.ftl");
     }
 
@@ -55,9 +48,6 @@ public class PayController extends Controller {
     }
 
     public void edit() {
-        Page<User> userPage = userService.paginate(getParaToInt(0, 1), 10);
-        setAttr("userPage",userPage);
-
         String id = getPara(0);
         Pay pay = payService.findById(id);
         setAttr("pay", pay);
@@ -69,4 +59,6 @@ public class PayController extends Controller {
         payService.deleteById(id);
         redirect("/pay");
     }
+
+
 }

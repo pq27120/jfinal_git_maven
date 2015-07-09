@@ -16,13 +16,13 @@ import com.xuan.model.Pay;
  * @Copyright 亚信科技
  * @CreateDate 2015-07-08 16:01
  */
-
 public class PayValidator extends Validator {
 
     @Override
     protected void validate(Controller c) {
         validateRequiredString("pay.time", "timeMsg", "请输入时间!");
         validateRequiredString("pay.amount", "amountMsg", "请输入金额!");
+        validateDouble("pay.amount", "amountMsg", "金额必须为数字!");
         validateRequiredString("pay.remark", "remarkMsg", "请输入备注!");
     }
 

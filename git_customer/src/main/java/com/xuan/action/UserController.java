@@ -10,6 +10,8 @@ import com.xuan.service.PayService;
 import com.xuan.service.UserService;
 import com.xuan.validator.UserValidator;
 
+import java.util.List;
+
 /**
  * 类简述
  * <p>
@@ -67,5 +69,11 @@ public class UserController extends Controller {
             userService.deleteById(id);
             redirect("/user");
         }
+    }
+
+    public void userList(){
+        List<User> userList = userService.findList();
+        setAttr("userList", userList);
+        renderJson();
     }
 }

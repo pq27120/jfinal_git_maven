@@ -17,7 +17,7 @@
 <@banner>
 </@banner>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
 
     <#include "../common/left_menu.ftl"/>
@@ -51,7 +51,9 @@
                                name="pay.time" readonly size="16">
                         <span class="add-on"><i class="icon-th"></i></span>
                         <#--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
-                        <#--<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>-->
+                        <#--<span class="input-group-addon">-->
+                            <#--<span class="glyphicon glyphicon-th"></span>-->
+                            <#--</span>-->
                     ${timeMsg!}
                     </div>
 
@@ -63,7 +65,8 @@
 
                     <div class="col-sm-10">
                         <input type="text" class="form-control" value="${(pay.amount)!}" id="amount"
-                               name="pay.amount">${amountMsg!}
+                               name="pay.amount">
+                        <span class="help-inline">${amountMsg!}</span>
                     </div>
                 </div>
 
@@ -72,9 +75,6 @@
 
                     <div class="col-sm-10">
                         <select class="form-control" value="${(pay.user_id)!}" name="pay.user_id" id="user_id">
-                        <#list userPage.getList() as user>
-                            <option value="${user.id}">${user.name}</option>
-                        </#list>
                         </select>${user_idMsg!}
                     </div>
                 </div>
@@ -84,7 +84,7 @@
 
                     <div class="col-sm-10">
                         <textarea class="form-control" id="remark" name="pay.remark"
-                                  rows="3"><#if pay??>${pay.remark}</#if></textarea>${remarkMsg!}
+                                  rows="3"><#if pay??><#if pay.remark??>${pay.remark}</#if></#if></textarea>${remarkMsg!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -107,7 +107,9 @@
             "jquery": "jquery/1.10.1/jquery.js",
             "bootstrap": "bootstrap/1.0.0/bootstrap.js",
             "datepicker": "datetimepicker/1.0.0/bootstrap-datetimepicker.js",
-            "datepickerzh": "datetimepicker/1.0.0/bootstrap-datetimepicker.zh-CN.js"
+            "datepickerzh": "datetimepicker/1.0.0/bootstrap-datetimepicker.zh-CN.js",
+            "validate": "jquery-validate/1.14.0/jquery.validate.js",
+            "validatezh" : "jquery-validate/1.14.0/messages_zh.js"
         }
     });
 

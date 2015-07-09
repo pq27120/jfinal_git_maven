@@ -4,6 +4,8 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.xuan.model.User;
 
+import java.util.List;
+
 /**
  * 类简述
  * <p>
@@ -20,6 +22,8 @@ import com.xuan.model.User;
 public interface UserService {
 
     Page<User> paginate(int pageNumber, int pageSize);
+
+    List<User> findList();
 
     void update(User user);
 
