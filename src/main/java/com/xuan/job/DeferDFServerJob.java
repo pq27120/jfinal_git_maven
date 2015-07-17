@@ -81,10 +81,12 @@ public class DeferDFServerJob implements Job {
                 httppost.releaseConnection();
                 html = EntityUtils.toString(entity, "GBK");
 
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 new DeferLog().set("time", new Date()).set("remark", UrlUtil.encoder(html)).save();
                 if (html.contains("请在该产品到期前1日内进行积分免费续期")) {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                    System.out.println(format.format(new Date()) + "续期完成");
+                    System.out.println(format.format(new Date()) + "暂不需要续期");
+                }else if(html.contains("恭喜您的云服务器延期成功，以下是您的资料")){
+                    System.out.println(format.format(new Date()) + "续期成功");
                 }
             }
         } catch (UnsupportedEncodingException e) {
