@@ -33,7 +33,6 @@ define(function (require) {
                 errorClass: 'help-block',
                 focusInvalid: false,
                 rules: {
-                    /* 页面必填项 name 属性的值 */
                     "pay.amount": {
                         required: true
                     }
@@ -56,8 +55,6 @@ define(function (require) {
             });
         }
 
-        //myValidator.init();
-        //$(".form-horizontal").validate();
     });
 
     function loadUserSelect() {
@@ -80,57 +77,5 @@ define(function (require) {
             }
         });
     }
-
-    //var myValidator = function() {
-    //    var handleSubmit = function() {
-    //        $('.form-horizontal').validate({
-    //            errorElement : 'span',
-    //            errorClass : 'help-block',
-    //            focusInvalid : false,
-    //            rules : {
-    //                amount : {
-    //                    required : true
-    //                }
-    //            },
-    //            messages : {
-    //                amount : {
-    //                    required : "请输入金额."
-    //                }
-    //            },
-    //
-    //            highlight : function(element) {
-    //                $(element).closest('.form-group').addClass('has-error');
-    //            },
-    //
-    //            success : function(label) {
-    //                label.closest('.form-group').removeClass('has-error');
-    //                label.remove();
-    //            },
-    //
-    //            errorPlacement : function(error, element) {
-    //                element.parent('div').append(error);
-    //            },
-    //
-    //            submitHandler : function(form) {
-    //                form.submit();
-    //            }
-    //        });
-    //
-    //        $('.form-horizontal input').keypress(function(e) {
-    //            if (e.which == 13) {
-    //                if ($('.form-horizontal').validate().form()) {
-    //                    $('.form-horizontal').submit();
-    //                }
-    //                return false;
-    //            }
-    //        });
-    //    };
-    //    return {
-    //        init : function() {
-    //            handleSubmit();
-    //        }
-    //    };
-    //
-    //}();
 });
 
