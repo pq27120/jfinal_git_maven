@@ -9,7 +9,6 @@ package com.xuan.common;
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.*;
-import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
@@ -76,10 +75,6 @@ public class CommonConfig extends JFinalConfig {
         arp.addMapping("pay", Pay.class);
 
         me.add(arp);
-
-        QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");
-        quartzPlugin.version(QuartzPlugin.VERSION_1);
-        me.add(quartzPlugin);
 
         me.add(new SpringPlugin());
     }

@@ -86,8 +86,11 @@ public class DeferDFServerJob implements Job {
                 html = EntityUtils.toString(entity, "GBK");
 
                 new DeferLog().set("time", new Date()).set("remark", UrlUtil.encoder(html)).save();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 if (html.contains("请在该产品到期前1日内进行积分免费续期")) {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    System.out.println(format.format(new Date()) + "暂不续期");
+                }else {
+                    System.out.println(UrlUtil.encoder(html));
                     System.out.println(format.format(new Date()) + "续期完成");
                 }
             }
