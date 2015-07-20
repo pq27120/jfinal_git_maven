@@ -2,8 +2,8 @@ package com.xuan.weixin.action;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.plugin.spring.Inject;
-import com.jfinal.plugin.spring.IocInterceptor;
+import com.xuan.plugin.spring.Inject;
+import com.xuan.plugin.spring.IocInterceptor;
 import com.xuan.service.DeferLogService;
 
 /**

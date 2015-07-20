@@ -2,15 +2,16 @@ package com.xuan.producer;
 
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
+import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.plugin.spring.SpringPlugin;
 import com.xuan.model.DeferLog;
 import com.xuan.model.Pay;
 import com.xuan.model.User;
+import com.xuan.plugin.spring.SpringPlugin;
 
 /**
  * 类简述
@@ -48,6 +49,9 @@ public class ProviderApp {
         arp.setShowSql(p.getBoolean("devMode", false));
         arp.setDevMode(p.getBoolean("devMode", false));
 
+        QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");
+        quartzPlugin.version(QuartzPlugin.VERSION_1);
+
         // 配置Spring插件
         SpringPlugin sp = new SpringPlugin(
                 "git_producer/src/main/webapp/WEB-INF/applicationContext.xml");
@@ -55,6 +59,7 @@ public class ProviderApp {
         // 手动启动各插件
         dp.start();
         arp.start();
+        quartzPlugin.start();
         sp.start();
 
         System.out.println("jfinal provider for Dubbo启动完成。");

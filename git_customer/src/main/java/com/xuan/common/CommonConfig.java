@@ -9,7 +9,6 @@ package com.xuan.common;
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.*;
-import com.jfinal.core.JFinal;
 import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -19,8 +18,8 @@ import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.xuan.model.DeferLog;
 import com.xuan.model.Pay;
 import com.xuan.model.User;
+import com.xuan.plugin.spring.SpringPlugin;
 import com.xuan.sdk.api.ApiConfigKit;
-import com.jfinal.plugin.spring.SpringPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -103,7 +102,7 @@ public class CommonConfig extends JFinalConfig {
 
 //        TableInitKit.init("blog", Blog.class, blogColumnMap);
 
-        System.out.println("Blog表字段模拟完成。");
+//        System.out.println("Blog表字段模拟完成。");
 
         System.out.println("jfinal consumer for Dubbo启动完成。");
     }

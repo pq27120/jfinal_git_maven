@@ -1,7 +1,11 @@
 package com.xuan.job;
 
+import com.jfinal.aop.Before;
 import com.xuan.model.DeferLog;
-import com.xuan.util.UrlUtil;
+import com.xuan.plugin.spring.Inject;
+import com.xuan.plugin.spring.IocInterceptor;
+import com.xuan.service.DeferLogService;
+import com.xuan.utils.UrlUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -19,7 +23,6 @@ import org.quartz.JobExecutionException;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,8 +40,9 @@ import java.util.List;
  * @Copyright 亚信科技
  * @CreateDate 2015-07-03 16:39
  */
-
 public class DeferDFServerJob implements Job {
+
+    private DeferLog deferLogDao;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -94,5 +98,9 @@ public class DeferDFServerJob implements Job {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setDeferLogDao(DeferLog deferLogDao) {
+        this.deferLogDao = deferLogDao;
     }
 }

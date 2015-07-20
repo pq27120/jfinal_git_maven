@@ -1,6 +1,4 @@
-package com.xuan.util;
-
-import freemarker.template.utility.StringUtil;
+package com.xuan.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
