@@ -116,11 +116,11 @@
             <version>0.9.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.jfinal</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.jfinal</groupId>-->
+            <!--<artifactId>jetty-server</artifactId>-->
+            <!--<version>1.0.0</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.jfinal</groupId>
