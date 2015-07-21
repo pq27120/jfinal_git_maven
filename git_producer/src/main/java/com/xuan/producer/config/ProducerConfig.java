@@ -5,6 +5,8 @@ import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.*;
 import com.jfinal.ext.plugin.quartz.QuartzPlugin;
+import com.jfinal.kit.PathKit;
+import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
@@ -35,6 +37,8 @@ public class ProducerConfig extends JFinalConfig {
 	public void configConstant(Constants me) {
         loadProp("producer_config_pro.txt", "producer_config.txt");
         me.setDevMode(PropKit.getBoolean("devMode", false));
+        //设置webRootPath
+        PathKit.setWebRootPath(PropKit.get("springPath"));
 	}
 
 	@Override
@@ -78,7 +82,7 @@ public class ProducerConfig extends JFinalConfig {
         me.add(quartzPlugin);
 
 		// 配置Spring插件
-		SpringPlugin sp = new SpringPlugin(PropKit.get("springPath"));
+		SpringPlugin sp = new SpringPlugin();
 
 		// 加入各插件到Config
 		me.add(dp);
