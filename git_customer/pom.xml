@@ -15,12 +15,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.20</version>
@@ -31,18 +25,6 @@
             <!--<artifactId>log4j</artifactId>-->
             <!--<version>1.2.16</version>-->
         <!--</dependency>-->
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.20</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
 
         <dependency>
             <groupId>dom4j</groupId>
@@ -75,39 +57,15 @@
         <!--</dependency>-->
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.5</version>
         </dependency>
 
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>r05</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
         </dependency>
 
         <!--<dependency>-->

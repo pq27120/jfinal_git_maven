@@ -50,7 +50,6 @@ public class ProviderApp {
         arp.setDevMode(p.getBoolean("devMode", false));
 
         QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");
-        quartzPlugin.version(QuartzPlugin.VERSION_1);
 
         // 配置Spring插件
         SpringPlugin sp = new SpringPlugin(
