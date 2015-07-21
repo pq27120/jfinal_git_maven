@@ -37,12 +37,14 @@ public class SpringPlugin implements IPlugin {
     }
 
     public boolean start() {
-        if (ctx != null)
+        if (ctx != null) {
             IocInterceptor.ctx = ctx;
-        else if (configurations != null)
+        } else if (configurations != null) {
             IocInterceptor.ctx = new FileSystemXmlApplicationContext(configurations);
-        else
+        } else {
+            System.out.println("========================2"+ PathKit.getWebRootPath());
             IocInterceptor.ctx = new FileSystemXmlApplicationContext(PathKit.getWebRootPath() + "/WEB-INF/applicationContext.xml");
+        }
         return true;
     }
 

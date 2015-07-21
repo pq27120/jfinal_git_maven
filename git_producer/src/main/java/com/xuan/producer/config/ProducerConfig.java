@@ -39,7 +39,8 @@ public class ProducerConfig extends JFinalConfig {
         me.setDevMode(PropKit.getBoolean("devMode", false));
         //设置webRootPath
         PathKit.setWebRootPath(PropKit.get("springPath"));
-	}
+        System.out.println("========================1"+ PathKit.getWebRootPath());
+    }
 
 	@Override
 	public void configHandler(Handlers me) {
