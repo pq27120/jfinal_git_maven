@@ -28,7 +28,6 @@ public class ResourceKit {
     public static Map<String, String> readProperties(String resourceName) {
         Properties properties = new Properties();
         URL resource = Resources.getResource(resourceName);
-        System.out.println("========================" + resource);
         try {
             properties.load(new InputStreamReader(resource.openStream(), "UTF-8"));
         } catch (Exception e) {
