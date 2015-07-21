@@ -77,6 +77,7 @@ public class QuartzPlugin implements IPlugin {
             Throwables.propagate(e);
         }
         Set<Map.Entry<Job, String>> set = jobs.entrySet();
+        System.out.println("==========set" + set);
         for (Map.Entry<Job, String> entry : set) {
             Job job = entry.getKey();
             String jobClassName = job.getClass().getName();
