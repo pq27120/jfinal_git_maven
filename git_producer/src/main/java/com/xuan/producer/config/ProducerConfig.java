@@ -4,7 +4,6 @@ import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.*;
-import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
@@ -15,6 +14,7 @@ import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.xuan.model.DeferLog;
 import com.xuan.model.Pay;
 import com.xuan.model.User;
+import com.xuan.plugin.quartz.QuartzPlugin;
 import com.xuan.plugin.spring.SpringPlugin;
 
 public class ProducerConfig extends JFinalConfig {
@@ -76,7 +76,6 @@ public class ProducerConfig extends JFinalConfig {
 		arp.setDialect(new MysqlDialect());
 
         QuartzPlugin quartzPlugin = new QuartzPlugin("job.properties", "quartz.properties");
-        quartzPlugin.version(QuartzPlugin.VERSION_1);
         me.add(quartzPlugin);
 
 		// 配置Spring插件

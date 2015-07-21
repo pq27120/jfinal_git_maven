@@ -1,21 +1,21 @@
 'use strict';
 
-var book = angular.module('book', []);
+var dormitory = angular.module('dormitory', []);
 
-book.config(['$routeProvider', function ($routeProvider) {
+dormitory.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {
             controller: 'ListCtrl',
-            templateUrl: 'view/list.html'
+            templateUrl: 'app/view/list.html'
         }).when('/edit/:id', {
             controller: 'EditCtrl',
-            templateUrl: 'view/edit.html'
+            templateUrl: 'app/view/edit.html'
         }).when('/view/:id', {
             controller: 'ViewCtrl',
-            templateUrl: 'view/view.html'
+            templateUrl: 'app/view/view.html'
         }).when('/new', {
             controller: 'NewCtrl',
-            templateUrl: 'view/edit.html'
+            templateUrl: 'app/view/edit.html'
         }).otherwise({
             redirectTo: '/'
         });

@@ -1,31 +1,33 @@
 'use strict';
 
-book.factory('books', ['$http', function ($http) {
-    var url = "api/book";
+dormitory.factory('dormitories', ['$http', function ($http) {
+    var url = "http://172.31.8.38:8086/dormitory";
+    $http.defaults.headers = {'Content-type': 'application/json'}
     var factory = {};
 
     factory.all = function () {
-        var books = $http.get(url).then(function (resp) {
-            return resp.data.book;
+        var dormitories = $http.get(url).then(function (resp) {
+            alert(resp.data);
+            return resp.data;
         });
-        return books;
+        return dormitories;
     };
 
     factory.get = function (id) {
-        var book = $http.get(url + '/' + id).then(function (resp) {
+        var dormitory = $http.get(url + '/' + id).then(function (resp) {
             return resp.data;
         });
-        return book;
+        return dormitory;
     };
 
-    factory.add = function(book) {
-        $http.post(url, book).then(function(resp){
+    factory.add = function(dormitory) {
+        $http.post(url, dormitory).then(function(resp){
             return resp;
         });
     };
 
-    factory.update = function(book) {
-        $http.put(url + '/' + book.id, book).then(function(resp){
+    factory.update = function(dormitory) {
+        $http.put(url + '/' + dormitory.id, dormitory).then(function(resp){
             return resp;
         });
     };

@@ -1,18 +1,18 @@
 'use strict';
 
-book.filter('paging', function () {
+dormitory.filter('paging', function () {
         return function (input, start) {
             if (input) {
                 return input.slice(start);
             }
         };
     })
-    .filter('bookname', function () {
-        return function (input, bookFilterdInput) {
+    .filter('name', function () {
+        return function (input, dormitoryFilterdInput) {
             if (input) {
                 var result = new Array();
                 for (var i = 0; i < input.length; i++) {
-                    if (input[i].name.toLowerCase().indexOf(bookFilterdInput.toLowerCase()) != -1) {
+                    if (input[i].name.toLowerCase().indexOf(dormitoryFilterdInput.toLowerCase()) != -1) {
                         result.push(input[i]);
                     }
                 }

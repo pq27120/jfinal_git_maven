@@ -2,6 +2,7 @@ package com.xuan.common;
 
 import com.jfinal.config.Routes;
 import com.xuan.action.PayController;
+import com.xuan.action.UserApiController;
 import com.xuan.action.UserController;
 import com.xuan.weixin.action.HelloController;
 
@@ -24,6 +25,7 @@ public class AdminRoute extends Routes {
     public void config() {
         add("/bootstrap", HelloController.class);
         add("/user", UserController.class);
+        add("/dormitory", UserApiController.class);
         add("/pay", PayController.class);
     }
 }

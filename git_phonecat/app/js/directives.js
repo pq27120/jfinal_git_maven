@@ -1,6 +1,6 @@
 'use strict';
 
-book.directive('myDirective', function () {
+dormitory.directive('myDirective', function () {
     return {
         restrict: 'E',
         controller: 'directiveCtrl',

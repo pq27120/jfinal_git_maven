@@ -2,7 +2,6 @@ package com.xuan.producer;
 
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
-import com.jfinal.ext.plugin.quartz.QuartzPlugin;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -11,6 +10,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.xuan.model.DeferLog;
 import com.xuan.model.Pay;
 import com.xuan.model.User;
+import com.xuan.plugin.quartz.QuartzPlugin;
 import com.xuan.plugin.spring.SpringPlugin;
 
 /**

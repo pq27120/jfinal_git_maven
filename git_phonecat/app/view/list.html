@@ -2,8 +2,8 @@
     <div class="panel-heading">
         <div class="row">
             <div class="input-group col-lg-4 pull-right bookFilterInput">
-                <input type="text" class="form-control" placeholder="输入要搜索的书名" ng-model="bookFilterdInput">
-                <div class="input-group-addon">书名检索</div>
+                <input type="text" class="form-control" placeholder="输入要搜索的人名" ng-model="dormitoryFilterdInput">
+                <div class="input-group-addon">检索</div>
             </div>
 
             <button class="btn btn-default" type="button" ng-click="loadList()">刷新</button>
@@ -28,22 +28,20 @@
             <thead>
             <tr>
                 <th>序号</th>
-                <th>书名</th>
-                <th>作者</th>
-                <th>出版社</th>
+                <th>名字</th>
+                <th>时间</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="book in books | bookname:bookFilterdInput | paging: currentPage*itemsPerPage | limitTo: itemsPerPage">
-                <td>{{book.id}}</td>
-                <td>《{{book.name}}》</td>
-                <td>{{book.author}}</td>
-                <td>{{book.press}}</td>
+            <tr ng-repeat="dormitory in dormitories | name:dormitoryFilterdInput | paging: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <td>{{dormitory.id}}</td>
+                <td>{{dormitory.name}}</td>
+                <td>{{dormitory.time}}</td>
                 <td>
-                    <a ng-href="#/view/{{book.id}}">查看</a>
-                    <a ng-href="#/edit/{{book.id}}">修改</a>
-                    <a ng-click="deleteBook($index, book.id)" class="delete-book">删除</a>
+                    <a ng-href="#/view/{{dormitory.id}}">查看</a>
+                    <a ng-href="#/edit/{{dormitory.id}}">修改</a>
+                    <a ng-click="deleteDormitory($index, dormitory.id)" class="delete-book">删除</a>
                 </td>
             </tr>
             </tbody>
