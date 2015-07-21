@@ -64,9 +64,10 @@ public class DeferDFServerJob implements Job {
             response = httpclient.execute(httpget); // 必须是同一个HttpClient！
             entity = response.getEntity();
             String html = EntityUtils.toString(entity, "GBK");
+            System.out.println("1================" + html);
             httpget.releaseConnection();
 
-            if (html.contains("欢迎您： <strong><font face=\"Courier New, Courier, mono\">pq27120</font></strong>")) {
+            if (html.contains("pq27120")) {
                 //第三步 进入延期界面
                 httppost = new HttpPost("http://www.idc789.com/vpsadm/selfvpsmodifyendtime.asp");
                 params = new ArrayList<NameValuePair>();
@@ -78,7 +79,7 @@ public class DeferDFServerJob implements Job {
                 entity = response.getEntity();
                 httppost.releaseConnection();
                 html = EntityUtils.toString(entity, "GBK");
-                System.out.println(html);
+                System.out.println("2================" + html);
 
                 new DeferLog().set("time", new Date()).set("remark", UrlUtil.encoder(html)).save();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
