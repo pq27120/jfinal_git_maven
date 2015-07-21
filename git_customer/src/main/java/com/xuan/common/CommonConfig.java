@@ -53,7 +53,8 @@ public class CommonConfig extends JFinalConfig {
 	}
 	
 	public void configPlugin(Plugins me) {
-		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim(),"com.mysql.jdbc.Driver");
+		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"),
+                PropKit.get("password").trim(),"com.mysql.jdbc.Driver");
         //集成druid的插件
         druidPlugin.addFilter(new StatFilter());
         druidPlugin.setInitialSize(3).setMinIdle(3).setMaxActive(5);

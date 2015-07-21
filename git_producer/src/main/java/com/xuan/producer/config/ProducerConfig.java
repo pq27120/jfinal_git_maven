@@ -37,9 +37,6 @@ public class ProducerConfig extends JFinalConfig {
 	public void configConstant(Constants me) {
         loadProp("producer_config_pro.txt", "producer_config.txt");
         me.setDevMode(PropKit.getBoolean("devMode", false));
-        //设置webRootPath
-        PathKit.setWebRootPath(PropKit.get("springPath"));
-        System.out.println("========================1"+ PathKit.getWebRootPath());
     }
 
 	@Override
@@ -83,7 +80,7 @@ public class ProducerConfig extends JFinalConfig {
         me.add(quartzPlugin);
 
 		// 配置Spring插件
-		SpringPlugin sp = new SpringPlugin();
+		SpringPlugin sp = new SpringPlugin(PropKit.get("springPath"));
 
 		// 加入各插件到Config
 		me.add(dp);
