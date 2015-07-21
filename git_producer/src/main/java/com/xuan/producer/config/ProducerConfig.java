@@ -78,7 +78,7 @@ public class ProducerConfig extends JFinalConfig {
         me.add(quartzPlugin);
 
 		// 配置Spring插件
-		SpringPlugin sp = new SpringPlugin();
+		SpringPlugin sp = new SpringPlugin(PropKit.get("springPath"));
 
 		// 加入各插件到Config
 		me.add(dp);
