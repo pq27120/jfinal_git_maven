@@ -50,8 +50,8 @@ public class ProducerConfig extends JFinalConfig {
 	@Override
 	public void configPlugin(Plugins me) {
 		// 配置Druid数据库连接池插件
-		DruidPlugin dp = new DruidPlugin(getProperty("jdbcUrl"),
-				getProperty("user"), getProperty("password").trim());
+		DruidPlugin dp = new DruidPlugin(PropKit.get("jdbcUrl"),
+                PropKit.get("user"), PropKit.get("password").trim());
         dp.setInitialSize(3).setMinIdle(3).setMaxActive(5);
 
         StatFilter stat = new StatFilter();
@@ -66,8 +66,8 @@ public class ProducerConfig extends JFinalConfig {
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(dp);
 
-		arp.setShowSql(getPropertyToBoolean("devMode", false));
-		arp.setDevMode(getPropertyToBoolean("devMode", false));
+		arp.setShowSql(PropKit.getBoolean("devMode", false));
+		arp.setDevMode(PropKit.getBoolean("devMode", false));
 		arp.addMapping("defer_log", DeferLog.class);
 		arp.addMapping("user", User.class);
 		arp.addMapping("pay", Pay.class);
