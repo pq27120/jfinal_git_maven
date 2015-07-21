@@ -50,7 +50,7 @@ public class ReturnCode {
     	put(40030, "不合法的refresh_token");
     	put(40031, "不合法的openid列表");
     	put(40032, "不合法的openid列表长度");
-    	put(40033, "不合法的请求字符，不能包含\\uxxxx格式的字符");
+    	put(40033, "不合法的请求字符，不能包含uxxxx格式的字符");
     	put(40035, "不合法的参数");
     	put(40038, "不合法的请求格式");
     	put(40039, "不合法的URL长度");
