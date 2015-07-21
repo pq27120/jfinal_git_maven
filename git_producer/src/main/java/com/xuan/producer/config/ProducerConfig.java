@@ -5,6 +5,7 @@ import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.*;
 import com.jfinal.ext.plugin.quartz.QuartzPlugin;
+import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
@@ -16,10 +17,24 @@ import com.xuan.plugin.spring.SpringPlugin;
 
 public class ProducerConfig extends JFinalConfig {
 
+    /**
+     * 如果生产环境配置文件存在，则优先加载该配置，否则加载开发环境配置文件
+     * @param pro 生产环境配置文件
+     * @param dev 开发环境配置文件
+     */
+    public void loadProp(String pro, String dev) {
+        try {
+            PropKit.use(pro);
+        }
+        catch (Exception e) {
+            PropKit.use(dev);
+        }
+    }
+
 	@Override
 	public void configConstant(Constants me) {
-		loadPropertyFile("producer_config.txt");
-		me.setDevMode(getPropertyToBoolean("devMode", false));
+        loadProp("producer_config_pro.txt", "producer_config.txt");
+        me.setDevMode(PropKit.getBoolean("devMode", false));
 	}
 
 	@Override

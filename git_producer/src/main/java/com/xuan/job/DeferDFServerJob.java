@@ -1,10 +1,6 @@
 package com.xuan.job;
 
-import com.jfinal.aop.Before;
 import com.xuan.model.DeferLog;
-import com.xuan.plugin.spring.Inject;
-import com.xuan.plugin.spring.IocInterceptor;
-import com.xuan.service.DeferLogService;
 import com.xuan.utils.UrlUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -41,8 +37,6 @@ import java.util.List;
  * @CreateDate 2015-07-03 16:39
  */
 public class DeferDFServerJob implements Job {
-
-    private DeferLog deferLogDao;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -84,13 +78,13 @@ public class DeferDFServerJob implements Job {
                 entity = response.getEntity();
                 httppost.releaseConnection();
                 html = EntityUtils.toString(entity, "GBK");
+                System.out.println(html);
 
                 new DeferLog().set("time", new Date()).set("remark", UrlUtil.encoder(html)).save();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 if (html.contains("请在该产品到期前1日内进行积分免费续期")) {
                     System.out.println(format.format(new Date()) + "暂不续期");
                 }else {
-                    System.out.println(UrlUtil.encoder(html));
                     System.out.println(format.format(new Date()) + "续期完成");
                 }
             }
@@ -101,9 +95,5 @@ public class DeferDFServerJob implements Job {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setDeferLogDao(DeferLog deferLogDao) {
-        this.deferLogDao = deferLogDao;
     }
 }
