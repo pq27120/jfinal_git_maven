@@ -81,7 +81,6 @@ public class CommonConfig extends JFinalConfig {
     }
 
     public void configInterceptor(Interceptors me) {
-		
 	}
 	
 	public void configHandler(Handlers me) {

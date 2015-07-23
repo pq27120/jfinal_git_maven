@@ -3,38 +3,17 @@
         <a type="button" class="btn btn-default" ng-href="#/">返回列表</a>
     </div>
     <div class="panel-body">
-        <form name="newBook" class="form-horizontal" role="form" ng-submit="newBook.$valid && new(book)">
+        <form name="newDormitory" class="form-horizontal" role="form" ng-submit="newDormitory.$valid && new(dormitory)">
             <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">书名</label>
+                <label for="name" class="col-sm-2 control-label">名字</label>
 
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="name" ng-model="book.name" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="author" class="col-sm-2 control-label">作者</label>
-
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="author" ng-model="book.author" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="press" class="col-sm-2 control-label">出版社</label>
-
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="press" ng-model="book.press" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="description" class="col-sm-2 control-label">简介</label>
-
-                <div class="col-sm-8">
-                    <textarea class="form-control" id="description" ng-model="book.description" rows="6" required></textarea>
+                    <input type="text" class="form-control" id="name" ng-model="dormitory.name" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary" ng-disabled="newBook.$invalid">确定</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="newDormitory.$invalid">确定</button>
                 </div>
             </div>
         </form>

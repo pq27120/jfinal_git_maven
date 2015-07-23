@@ -7,7 +7,6 @@ dormitory.factory('dormitories', ['$http', function ($http) {
 
     factory.all = function () {
         var dormitories = $http.get(url).then(function (resp) {
-            alert(resp.data);
             return resp.data;
         });
         return dormitories;
@@ -21,19 +20,37 @@ dormitory.factory('dormitories', ['$http', function ($http) {
     };
 
     factory.add = function(dormitory) {
-        $http.post(url, dormitory).then(function(resp){
+        $http({
+            url: url,
+            dataType: 'json',
+            method: 'POST',
+            data: {name :dormitory['name']}
+        }).success(function(resp){
             return resp;
         });
     };
 
     factory.update = function(dormitory) {
-        $http.put(url + '/' + dormitory.id, dormitory).then(function(resp){
+        $http({
+            url: url + '/' +dormitory.id,
+            dataType: 'json',
+            method: 'PUT',
+            data: {name :dormitory['name']},
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }).success(function(resp){
             return resp;
         });
     };
 
     factory.delete = function(id) {
-        $http.delete(url + '/' + id).then(function(resp){
+        $http({
+            url: url + '/' +id,
+            dataType: 'json',
+            method: 'DELETE',
+            data: {}
+        }).success(function(resp){
             return resp;
         });
     };
