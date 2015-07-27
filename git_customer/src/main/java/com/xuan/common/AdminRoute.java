@@ -1,10 +1,7 @@
 package com.xuan.common;
 
 import com.jfinal.config.Routes;
-import com.xuan.action.IDCExtendController;
-import com.xuan.action.PayController;
-import com.xuan.action.UserApiController;
-import com.xuan.action.UserController;
+import com.xuan.action.*;
 import com.xuan.weixin.action.HelloController;
 
 /**
@@ -29,5 +26,6 @@ public class AdminRoute extends Routes {
         add("/dormitory", UserApiController.class);
         add("/pay", PayController.class);
         add("/idc", IDCExtendController.class);
+        add("/ssq", SSQController.class);
     }
 }

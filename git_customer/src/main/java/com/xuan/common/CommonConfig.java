@@ -90,15 +90,6 @@ public class CommonConfig extends JFinalConfig {
 	
     @Override
     public void afterJFinalStart() {
-        Map<String, Class<?>> blogColumnMap = new HashMap<String, Class<?>>();
-        blogColumnMap.put("id", Integer.class);
-        blogColumnMap.put("title", String.class);
-        blogColumnMap.put("content", String.class);
-
-//        TableInitKit.init("blog", Blog.class, blogColumnMap);
-
-//        System.out.println("Blog表字段模拟完成。");
-
         System.out.println("jfinal consumer for Dubbo启动完成。");
     }
 }
