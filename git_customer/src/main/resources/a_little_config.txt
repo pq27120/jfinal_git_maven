@@ -13,3 +13,5 @@ appSecret=99b75ad9d1a5858185736d17f99c4995
 #是否对消息进行加密，是否对消息进行加密，对应于微信平台的消息加解密方式，false支持明文模式及兼容模式，true支持安全模式及兼容模式
 #encryptMessage=false
 #encodingAesKey=YkASaFfBp86wQFCej9110fHLKl7zHmj9DnOtv8Fpnpp
+
+springPath = E:\\project\\common\\jfinal_git_maven\\git_customer\\src\\main\\webapp\\WEB-INF\\applicationContext.xml

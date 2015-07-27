@@ -77,7 +77,7 @@ public class CommonConfig extends JFinalConfig {
 
         me.add(arp);
 
-        me.add(new SpringPlugin());
+        me.add(new SpringPlugin(PropKit.get("springPath")));
     }
 
     public void configInterceptor(Interceptors me) {
