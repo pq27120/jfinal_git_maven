@@ -12,14 +12,14 @@
 </head>
 <body>
 
-<#include "common/banner.html"/>
+<#include "common/banner.ftl"/>
 <@banner>
 </@banner>
 
 <div class="container-fluid">
     <div class="row">
 
-        <#include "common/left_menu.html"/>
+        <#include "common/left_menu.ftl"/>
         <@menu>
         </@menu>
 
