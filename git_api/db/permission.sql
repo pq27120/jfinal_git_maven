@@ -1,10 +1,10 @@
-CREATE TABLE T_ADMIN_USER (
-    ID BIGINT NOT NULL AUTO_INCREMENT,
-    EMAIL VARCHAR(255),
-    LOGIN_NAME VARCHAR(255) NOT NULL UNIQUE,
-    NAME VARCHAR(255),
-    PASSWORD VARCHAR(255),
-    PRIMARY KEY (ID)
+create table t_admin_user (
+    id bigint not null auto_increment,
+    email varchar(255),
+    login_name varchar(255) not null unique,
+    name varchar(255),
+    password varchar(255),
+    primary key (id)
 )
 
-INSERT INTO T_ADMIN_USER (EMAIL, LOGIN_NAME, NAME, PASSWORD) VALUES ('PQ@126.COM', 'PQ', 'PQ', 'E10ADC3949BA59ABBE56E057F20F883E');
+insert into t_admin_user (email, login_name, name, password) values ('pq@126.com', 'pq', 'pq', 'e10adc3949ba59abbe56e057f20f883e');

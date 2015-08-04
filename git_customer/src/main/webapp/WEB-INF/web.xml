@@ -25,7 +25,7 @@
         <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
         <init-param>
             <param-name>casServerLoginUrl</param-name>
-            <param-value>http://sso.wsria.com/cas/login</param-value>
+            <param-value>http://192.243.115.64:10000/cas/login</param-value>
         </init-param>
         <init-param>
             <!--这里的server是服务端的IP-->
@@ -46,7 +46,7 @@
         </filter-class>
         <init-param>
             <param-name>casServerUrlPrefix</param-name>
-            <param-value>http://sso.wsria.com/cas/</param-value>
+            <param-value>http://192.243.115.64:10000/cas</param-value>
         </init-param>
         <init-param>
             <param-name>serverName</param-name>
